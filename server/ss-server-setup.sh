@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt-get update
-apt-get install python-pip
+apt-get -y install python-pip
 
 pip install shadowsocks
 

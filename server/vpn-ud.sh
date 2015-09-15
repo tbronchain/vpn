@@ -1,7 +1,7 @@
 #!/bin/bash
 
 apt-get update
-apt-get install git emacs24-nox
+apt-get -y install git emacs24-nox
 
 mkdir /data
 cd /data

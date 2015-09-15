@@ -12,7 +12,7 @@ echo "Configuring auto VPN server ..."
 
 # install dependencies
 apt-get update
-apt-get install pptpd
+apt-get -y install pptpd
 
 # set conf
 cat >> /etc/pptpd.conf <<EOF

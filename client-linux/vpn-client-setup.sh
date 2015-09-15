@@ -12,7 +12,7 @@ SERVER_IP="192.168.20.1"
 echo "Configuring auto VPN ..."
 
 # install dependencies
-apt-get install pptp-linux
+apt-get -y install pptp-linux
 
 # set conf
 cat > /etc/ppp/peers/$SERVICE <<EOF
