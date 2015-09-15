@@ -3,7 +3,7 @@
 echo "please input server ip"
 read -r IP
 
-echo "pleaqse input password"
+echo "please input password"
 read -r PW
 
 # install brew
@@ -22,3 +22,14 @@ cat > /usr/local/etc/shadowsocks-libev.json <<EOF
         "method": "aes-256-cfb"
 }
 EOF
+
+mkdir -p /usr/local/opt/
+cp SimpleShadowSocks.py /usr/local/opt/SimpleShadowSocks.py
+
+mkdir -p ~/Library/LaunchAgents/
+cp net.almaritech.simpleshadowsocks ~/Library/LaunchAgents/net.almaritech.simpleshadowsocks
+
+launchctl load ~/Library/LaunchAgents/net.almaritech.simpleshadowsocks
+launchctl start net.almaritech.simpleshadowsocks
+
+echo "Done."
