@@ -20,7 +20,7 @@ base_model = {
 class AwesomeStatusBarApp(rumps.App):
     def __init__(self):
         super(AwesomeStatusBarApp, self).__init__("ES")
-        self.menu = ["Disconnect", "Reconnect", "Change IP", "About"]
+        self.menu = ["Disconnect", "Reconnect", "Change IP", "Change Password", "About"]
         subprocess.call(["launchctl","load",os.path.expanduser("~/Library/LaunchAgents/homebrew.mxcl.shadowsocks-libev.plist")])
         pout,perr = subprocess.Popen("networksetup -getsocksfirewallproxy Wi-Fi | grep \"^Enabled: Yes$\" | wc -l", shell=True, stdout=subprocess.PIPE).communicate()
         print "res = %s"%pout
@@ -54,8 +54,7 @@ class AwesomeStatusBarApp(rumps.App):
             sender.title = 'Disconnect'
             #rumps.alert("Easy ShadowSocks", "Connected!")
 
-    @rumps.clicked("Change IP")
-    def change_ip(self, _):
+    def change_something(self, message, key):
         model = None
         try:
             with open("/usr/local/etc/shadowsocks-libev.json", "r") as f:
@@ -65,17 +64,24 @@ class AwesomeStatusBarApp(rumps.App):
         if not model:
             print "Warning: using base model"
             model = base_model
-        w = rumps.Window(message="Set the server's address:", title='Easy ShadowSocks',default_text=model.get("server",""),cancel=True)
+        w = rumps.Window(message=message, title='Easy ShadowSocks',default_text=model.get(key,""),cancel=True)
         r = w.run()
         if not r.clicked:
             return
-        model["server"] = r.text
+        model[key] = r.text
         with open("/usr/local/etc/shadowsocks-libev.json", "w") as f:
             f.write(json.dumps(model))
         subprocess.call(["launchctl","unload",os.path.expanduser("~/Library/LaunchAgents/homebrew.mxcl.shadowsocks-libev.plist")])
         time.sleep(1)
         subprocess.call(["launchctl","load",os.path.expanduser("~/Library/LaunchAgents/homebrew.mxcl.shadowsocks-libev.plist")])
-        #rumps.alert("Easy ShadowSocks", "IP changed to %s!"%(model["server"]))
+
+    @rumps.clicked("Change IP")
+    def change_ip(self, _):
+        self.change_something("Set the server's address:", "server")
+
+    @rumps.clicked("Change Password")
+    def change_ip(self, _):
+        self.change_something("Set the server's password:", "password")
 
     @rumps.clicked("About")
     def about(self, _):
