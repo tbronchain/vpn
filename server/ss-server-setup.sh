@@ -1,12 +1,12 @@
 #!/bin/bash
 
+echo "please input password for SS VPN"
+read -r PW
+
 apt-get update
 apt-get -y install python-pip
 
 pip install shadowsocks
-
-echo "please input password"
-read -r PW
 
 cat >> /etc/shadowsocks.json <<EOF
 {
