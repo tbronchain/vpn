@@ -6,7 +6,7 @@ apt-get install python-pip
 pip install shadowsocks
 
 echo "please input password"
-read PW
+read -r PW
 
 cat >> /etc/shadowsocks.json <<EOF
 {

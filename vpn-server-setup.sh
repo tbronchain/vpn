@@ -4,9 +4,9 @@
 NETWORK="192.168.20"
 
 echo "please input your vpn username"
-read USER1
+read -r USER1
 echo "please input your vpn user password"
-read PW1
+read -r PW1
 
 echo "Configuring auto VPN server ..."
 
