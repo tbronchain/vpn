@@ -57,9 +57,11 @@ sysctl -p
 
 echo "Install supervisord"
 
-pip install supervisor
+#pip install supervisor
+apt-get -y install supervisor
 echo_supervisord_conf > /etc/supervisord.conf
 
+mkdir -p /etc/supervisor/conf.d/
 cat >> /etc/supervisor/conf.d/shadowsocks.conf <<EOF
 [program:shadowsocks]
 command=ssserver -c /etc/shadowsocks.json
