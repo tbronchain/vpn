@@ -14,6 +14,7 @@ brew install python
 brew install shadowsocks-libev
 
 # install rumps
+sudo pip install pyobjc
 sudo pip install rumps
 
 cat > /usr/local/etc/shadowsocks-libev.json <<EOF
@@ -31,6 +32,7 @@ mkdir -p /usr/local/opt/
 cp SimpleShadowSocks.py /usr/local/opt/SimpleShadowSocks.py
 
 mkdir -p ~/Library/LaunchAgents/
+cp homebrew.mxcl.shadowsocks-libev.plist ~/Library/LaunchAgents/homebrew.mxcl.shadowsocks-libev.plist
 cp com.almaritech.simpleshadowsocks.plist ~/Library/LaunchAgents/com.almaritech.simpleshadowsocks.plist
 
 launchctl load ${HOME}/Library/LaunchAgents/com.almaritech.simpleshadowsocks.plist
