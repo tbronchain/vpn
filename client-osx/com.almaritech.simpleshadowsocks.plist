@@ -3,12 +3,21 @@
 <plist version="1.0">
   <dict>
     <key>Label</key>
-    <string>net.almaritech.simpleshadowsocks</string>
+    <string>com.almaritech.simpleshadowsocks</string>
     <key>ProgramArguments</key>
     <array>
-      <string>python</string>
+      <string>/usr/local/bin/python</string>
       <string>/usr/local/opt/SimpleShadowSocks.py</string>
     </array>
+    <!-- Debug -->
+    <!--
+    <key>StandardOutPath</key>
+    <string>/tmp/ess.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/ess.err.log</string>
+    <key>Debug</key>
+    <true/>
+    -->
     <key>RunAtLoad</key>
     <true/>
     <key>KeepAlive</key>
