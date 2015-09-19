@@ -22,6 +22,10 @@ pkgbuild --root ./SimpleShadowSocks.app --scripts scripts --component-plist Simp
 
 # bundle
 mkdir -p pkg/simple-ss
-cp -r SimpleShadowSocks.pkg scripts/ss-setup.sh pkg/simple-ss/
+cp -r SimpleShadowSocks.pkg pkg/simple-ss/SimpleShadowSocks.pkg
+cp -r scripts/ss-setup.sh pkg/simple-ss/ss-setup.command
+cp -r misc/README.html pkg/simple-ss/README.html
+cp -r misc/resources pkg/simple-ss/resources
 cd pkg
-zip -r simple-ss.zip simple-ss
+hdiutil create -volname SimpleShadowSocks -srcfolder ./simple-ss -ov -format UDZO simple-ss.dmg
+cd -
