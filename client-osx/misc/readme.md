@@ -2,8 +2,8 @@
 
 ## Installation
 
-- Run `ss-setup.command` to setup the requirements
-- Run `SimpleShadowSocks.pkg` to setup the application
+- Run `ss-setup.command` to setup the requirements. note: If "double-click" doesn't work (because of "untrusted package"), right click on the icone, then select "Open", then click on "Open" again.
+- Run `SimpleShadowSocks.pkg` to setup the application. Same note as before.
 
 Application will be deployed under "Applications" directory.
 
