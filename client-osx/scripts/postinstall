@@ -10,6 +10,7 @@ cat > /usr/local/etc/shadowsocks-libev.json <<EOF
         "method": "aes-256-cfb"
 }
 EOF
+chown ${USER} /usr/local/etc/shadowsocks-libev.json
 
 mkdir -p ~/Library/LaunchAgents/
 cat > ${HOME}/Library/LaunchAgents/homebrew.mxcl.shadowsocks-libev.plist <<EOF
@@ -35,3 +36,6 @@ cat > ${HOME}/Library/LaunchAgents/homebrew.mxcl.shadowsocks-libev.plist <<EOF
   </dict>
 </plist>
 EOF
+chown ${USER} ${HOME}/Library/LaunchAgents/homebrew.mxcl.shadowsocks-libev.plist
+
+chown -R ${USER} /Applications/SimpleShadowSocks.app/*

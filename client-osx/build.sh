@@ -12,7 +12,7 @@ elif [ "$1" = "--re" ]; then
 fi
 
 # build app
-#py2applet --make-setup --iconfile misc/ShadowSocks.png src/SimpleShadowSocks.py
+#py2applet --make-setup --iconfile misc/ShadowSocks.icns src/SimpleShadowSocks.py
 python setup.py py2app
 cp -r dist/SimpleShadowSocks.app SimpleShadowSocks.app
 

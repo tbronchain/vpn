@@ -8,8 +8,8 @@ Usage:
 from setuptools import setup
 
 APP = ['src/SimpleShadowSocks.py']
-DATA_FILES = ['misc/ShadowSocks.png']
-OPTIONS = {'argv_emulation': True, 'iconfile': 'misc/ShadowSocks.png'}
+DATA_FILES = []
+OPTIONS = {'argv_emulation': True, 'iconfile': 'misc/AppIcon.icns'}
 
 setup(
     app=APP,
