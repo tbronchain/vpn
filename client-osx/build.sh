@@ -5,14 +5,14 @@
 #
 
 if [ "$1" = "--clean" ]; then
-    rm -rf SimpleShadowSocks.{app,pkg,plist} build dist setup.py
+    rm -rf SimpleShadowSocks.{app,pkg,plist} build dist
     exit
 elif [ "$1" = "--re" ]; then
-    rm -rf SimpleShadowSocks.{app,pkg,plist} build dist pkg setup.py
+    rm -rf SimpleShadowSocks.{app,pkg,plist} build dist pkg
 fi
 
 # build app
-py2applet --make-setup src/SimpleShadowSocks.py
+#py2applet --make-setup --iconfile misc/ShadowSocks.png src/SimpleShadowSocks.py
 python setup.py py2app
 cp -r dist/SimpleShadowSocks.app SimpleShadowSocks.app
 
