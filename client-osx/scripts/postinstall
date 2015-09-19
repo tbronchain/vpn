@@ -1,0 +1,37 @@
+#!/bin/bash
+
+cat > /usr/local/etc/shadowsocks-libev.json <<EOF
+{
+        "server_port": 443,
+        "local_port": 8080,
+        "server": "",
+        "timeout": 300,
+        "password": "",
+        "method": "aes-256-cfb"
+}
+EOF
+
+mkdir -p ~/Library/LaunchAgents/
+cat > ${HOME}/Library/LaunchAgents/homebrew.mxcl.shadowsocks-libev.plist <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>homebrew.mxcl.shadowsocks-libev</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/local/opt/shadowsocks-libev/bin/ss-local</string>
+      <string>-c</string>
+      <string>/usr/local/etc/shadowsocks-libev.json</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <dict>
+      <key>SuccessfulExit</key>
+      <false/>
+    </dict>
+  </dict>
+</plist>
+EOF
