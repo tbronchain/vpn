@@ -10,6 +10,7 @@ import subprocess
 import json
 import os
 import time
+import platform
 
 base_model = {
     "server":"127.0.0.1",
@@ -23,6 +24,11 @@ base_model = {
 class SimpleShadowSocks(rumps.App):
     def __init__(self):
         super(SimpleShadowSocks, self).__init__("ES")
+
+        v, _, _ = platform.mac_ver()
+        v = v.split('.')[:2]
+        self.version = int(v[1])
+
         self.menu = ["Disconnect", "Reconnect", "Change IP", "Change Password", "About"]
         subprocess.call(["launchctl","load",os.path.expanduser("~/Library/LaunchAgents/homebrew.mxcl.shadowsocks-libev.plist")])
         pout,perr = subprocess.Popen("networksetup -getsocksfirewallproxy Wi-Fi | grep \"^Enabled: Yes$\" | wc -l", shell=True, stdout=subprocess.PIPE).communicate()
@@ -34,7 +40,8 @@ class SimpleShadowSocks(rumps.App):
             pass
         if res != 1:
             subprocess.call(["networksetup","-setsocksfirewallproxy","Wi-Fi","127.0.0.1","8080"])
-            #subprocess.call(["networksetup","-setsocksfirewallproxystate","Wi-Fi","on"])
+            if self.version < 10:
+                subprocess.call(["networksetup","-setsocksfirewallproxystate","Wi-Fi","on"])
 
     @rumps.clicked("Reconnect")
     def reconnect(self, sender):
@@ -54,7 +61,8 @@ class SimpleShadowSocks(rumps.App):
         else:
             subprocess.call(["launchctl","load",os.path.expanduser("~/Library/LaunchAgents/homebrew.mxcl.shadowsocks-libev.plist")])
             subprocess.call(["networksetup","-setsocksfirewallproxy","Wi-Fi","127.0.0.1","8080"])
-            #subprocess.call(["networksetup","-setsocksfirewallproxystate","Wi-Fi","on"])
+            if self.version < 10:
+                subprocess.call(["networksetup","-setsocksfirewallproxystate","Wi-Fi","on"])
             time.sleep(1)
             sender.title = 'Disconnect'
             #rumps.alert("Easy ShadowSocks", "Connected!")
