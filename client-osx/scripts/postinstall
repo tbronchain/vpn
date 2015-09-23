@@ -39,3 +39,8 @@ EOF
 chown ${USER} ${HOME}/Library/LaunchAgents/homebrew.mxcl.shadowsocks-libev.plist
 
 chown -R ${USER} /Applications/SimpleShadowSocks.app/*
+
+networksetup -setsocksfirewallproxy Wi-Fi 127.0.0.1 8080
+networksetup -setsocksfirewallproxystate Wi-Fi off
+
+# EOF
