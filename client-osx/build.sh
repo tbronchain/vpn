@@ -24,6 +24,7 @@ pkgbuild --root ./SimpleShadowSocks.app --scripts scripts --component-plist Simp
 mkdir -p pkg/simple-ss
 cp -r SimpleShadowSocks.pkg pkg/simple-ss/SimpleShadowSocks.pkg
 cp -r scripts/ss-setup.sh pkg/simple-ss/ss-setup.command
+cp -r scripts/config-fix.sh pkg/simple-ss/config-fix.command
 cp -r misc/README.html pkg/simple-ss/README.html
 cp -r misc/resources pkg/simple-ss/resources
 cd pkg
