@@ -98,7 +98,7 @@ class SimpleShadowSocks(rumps.App):
 
     @rumps.clicked("About")
     def about(self, _):
-        rumps.alert("Easy ShadowSocks", "Author: Thibault Bronchain\n(c) 2015 Almaritech Ltd. - All Rights Reserved")
+        rumps.alert("Easy ShadowSocks", "Author: Thibault Bronchain\n(c) 2015 - All Rights Reserved")
 
 if __name__ == "__main__":
     SimpleShadowSocks().run()
