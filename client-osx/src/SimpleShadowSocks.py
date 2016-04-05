@@ -2,7 +2,7 @@
 '''
  Easy ShadowSocks
  by Thibault Bronchain
- (c) 2015 Almaritech Ltd. - All Rights Reserved
+ (c) 2015 - All Rights Reserved
 '''
 
 import rumps
