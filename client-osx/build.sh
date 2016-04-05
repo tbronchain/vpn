@@ -18,7 +18,7 @@ cp -r dist/SimpleShadowSocks.app SimpleShadowSocks.app
 
 # build pkg
 pkgbuild --analyze --root ./SimpleShadowSocks.app "SimpleShadowSocks.plist"
-pkgbuild --root ./SimpleShadowSocks.app --scripts scripts --component-plist SimpleShadowSocks.plist --identifier "com.almaritech.simpleshadowsocks.pkg" --version 1 --install-location "/Applications/SimpleShadowSocks.app/"  SimpleShadowSocks.pkg
+pkgbuild --root ./SimpleShadowSocks.app --scripts scripts --component-plist SimpleShadowSocks.plist --identifier "com.simpleshadowsocks.pkg" --version 1 --install-location "/Applications/SimpleShadowSocks.app/"  SimpleShadowSocks.pkg
 
 # bundle
 mkdir -p pkg/simple-ss
